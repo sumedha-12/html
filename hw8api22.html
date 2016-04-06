@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"/>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+	<link href="http://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="http://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>"http://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.1/css/bootstrap-toggle.css"</script>
+	<script src="https://code.highcharts.com/stock/highstock.js"></script>
+	<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script>
+$(function() 
+{
+    $( "#stock" ).autocomplete(
+    {
+		
+      source: function( request, response )
+      {
+        $.ajax(
+        {
+          url: "http://nupoor.t2h965pjcp.us-west-2.elasticbeanstalk.com/index.php",
+          dataType: "json",
+          data:
+          {
+            company: request.term
+          },
+          success: function( data ) 
+          {
+            response( $.map(JSON.parse(data), function(val){
+				return{
+						label: val.Symbol +' - '+ val.Name+' ('+val.Exchange+')',
+						value: val.Symbol
+				}
+			}));
+          }
+        });
+      },
+	  
+
+    });
+});
+      function image(){
+          var symbol = document.getElementById('stock').value;
+          var ref='http://chart.finance.yahoo.com/t?s='.concat(symbol);
+          ref=ref.concat('&lang=en-US&width=400&height=300');
+          document.getElementById('yahoo').innerHTML='<img src='+ref+'>';
+      }
+  </script>
+  <style>
+	body{
+	background-color:#184E70;
+	}
+	.heading
+	{
+		margin-left: 430px;
+		position:relative;
+	}
+	
+	.container{
+        margin-top: 50px;
+		padding:15px;
+		background-color: white;
+		border-radius: 15px;
+	}
+      
+      hr { 
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-style: inset;
+    border-width: 0.1px;
+	border-color:white;
+} 
+      .up_arrow{
+          color: green;
+      }
+      .down_arrow{
+          color: red;
+      }
+      #myCarousel
+        {
+            margin-left: 100px;
+            margin-top: 30px;
+            width: 1170px;
+            height: 300px;
+            
+		border-radius: 15px;
+        }
+        body
+        {
+            background-color: #396A88;
+        }
+      .glyphicon glyphicon-chevron-left
+      {
+          margin-left: 200px;
+      }
+      
+      .star {
+   color: red; /* Make it red */
+   font-size: 60%; /* Make it twice as large */
+    margin-top: auto;
+}
+      #sup
+      {
+          font-size: 80%;
+          margin-top: 100px;
+      }
+    
+      .table
+      {
+          margin-top: 100px;
+      }
+      #logo
+      {
+          margin-left:990px;
+          margin-top: -45px;
+          width: 80px;
+          height: 30px;
+      }
+      .panel-heading
+      {
+          height: 45px;
+      }
+	  .ui-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  display: none;
+  min-width: 160px;
+  _width: 160px;
+  padding: 4px 0;
+  margin: 4px 0 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-color: #ccc;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+      }
+.ui-menu-item:hover
+      {
+          background-color:#ccc;
+          color:#000;
+      }
+  
+
+    
+  }
+}
+  </style>
+</head>
+<body>
+
+<div class="container">
+	<h3 class="heading">Stock Market Search</h3>
+	  <form class="form-inline" role="form">
+		<div class="form-group">
+		
+		  <label for="stock">Enter the stock name or symbol:<sup id="sup" style="color:red;"> *</sup></label>
+		  
+		  <span style="margin-left:70px"><input type="text" class="form-control" size= "70" id="stock" placeholder="Apple Inc or AAPL" required></span>
+		</div>
+		<span style="margin-left:25px; "><button type="submit" id="submit" class="btn btn-primary" style= "font-size:14px"><span class="glyphicon glyphicon-search" >Get Quote</span></button></span>
+		
+		<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-refresh">Clear</span></button>
+	  </form>
+	  <br/>
+	  <span style="margin-left: 900px; margin-top: 1000px;font-weight:bold">Powered by:</span><a href="http://www.markit.com/product/markit-on-demand"><img src="http://cs-server.usc.edu:45678/hw/hw8/images/mod-logo.png" id="logo" /></a>
+</div>
+<hr>      
+<div id = "myCarousel" class = "carousel slide" data-ride="carousel" style="background-color: white height:200px" data-interval="false">
+   
+   <!-- Carousel indicators -->
+   <ol class = "carousel-indicators">
+      <li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
+      <li data-target = "#myCarousel" data-slide-to = "1"></li>
+       </ol>   
+   
+   <!-- Carousel items -->
+        
+        
+
+    <div class="carousel-inner" role="listbox" style="background-color:white ; border-radius:15px ; height:auto;">
+    
+        <div class="item active">
+        
+			<div id="header" style="width:auto; padding:20px">
+				<div class="panel panel-default">
+				<!-- Default panel contents -->
+					<div class="panel-heading">Favourite List<span style="margin-left: 740px; height:40px">Automatic Refresh</span>
+						<input type="checkbox" data-toggle="toggle">
+							<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span></button>
+							<button type="submit" class="btn btn-default disabled"><span class="glyphicon glyphicon-arrow-right"></span></button>
+         
+					</div>
+					<!-- List group -->
+					<div >
+						<!--<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>-->
+						<table class="table table-striped">
+							<thead>
+							  <tr>
+								<th>Symbol</th>
+								<th>Company Name</th>
+								<th>Stock Price</th>
+								<th>Change(Change Percent)</th>
+								<th>Market Cap</th>
+							  </tr>
+							</thead>
+						</table>
+					</div>
+					<div id="result">
+						<Script>
+							if (typeof(Storage) !== "undefined") 
+							{
+								// Store
+								localStorage.setItem("lastname", "Smith");
+								// Retrieve
+								document.getElementById("result").innerHTML = "<table><tr><td>" + localStorage.getItem("lastname") + "</td></tr></table>";
+							}
+						</script>
+					</div>
+				</div>   
+			</div>    
+    
+		</div>
+
+
+        
+        
+    <div class="item">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <button type="submit" class="btn btn-default" id="submit"><span class="glyphicon glyphicon-arrow-left"></span></button>
+				<span style="margin-left:505px"></span>Stock Details
+            <div id="header" style="width:1170px; margin-top:-30px; padding:20px">
+
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle='pill' href="#currentstock"><span class="glyphicon glyphicon-time"></span>Current Stock</a></li>
+					<li><a data-toggle='pill' href="#historicalstats" onclick="history()"><span class="glyphicon glyphicon-stats"></span> Historical charts</a></li>
+					<li><a data-toggle='pill' href="#newsfeeds" id='news'>News Feeds</a></li>
+				</ul>
+                <div class='tab-content'>
+                    <div id='currentstock' class='tab-pane in active'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <div id='stocktable'></div>
+                            </div>
+                            <div class = 'col-md-6'>
+                                <div id="yahoo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="historicalstats" class='tab-pane'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <div id='historical'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div id='newsfeeds' class='tab-pane'>
+						<div class='row'>
+							<div class='col-md-12'>
+								<div id='feeds'>
+								</div>
+							</div>
+						</div>
+					</div>
+                    </div>
+                </div>
+                </div>
+			</div>
+            </div>
+			</div>        
+        </div> 
+
+			
+			
+				<script>
+					var symbol = document.getElementById("stock").value;
+					$('.btn btn-primary')
+				    .click(function (event) {
+					   dialog(this);
+					   event.preventDefault();
+					   event.stopPropagation();
+					});
+					$("#submit").click(function(){
+					$("#myCarousel").carousel("next");
+					});
+					$(function() 
+					{
+						$("#submit").click(function()
+						{
+							//var stockdata = $('#stock').val();
+                            var symbol = document.getElementById("stock").value;
+                            console.log(symbol);
+								$.ajax(
+								{
+								  type: "GET",
+								  url: "http://nupoor.t2h965pjcp.us-west-2.elasticbeanstalk.com/index.php",
+								  data: {stockquote : symbol},
+								  dataType: "json",
+								  success: function(data) 
+								  {
+                                      if(data.Message == undefined)
+									 {
+                                         alert(data.Message);
+                                         alert(data.Name);
+                                     }
+                                      else
+                                    {
+                                            image();
+									        console.log(data);
+                                            console.log(data.Name);
+                                            if(data.ChangePercent<0)
+                                            {
+                                                var arrow_url='http://cs-server.usc.edu:45678/hw/hw8/images/down.png';
+                                                var color_class='down_arrow';
+                                            }
+                                            else
+                                            {
+                                                arrow_url= 'http://cs-server.usc.edu:45678/hw/hw8/images/up.png';
+                                                color_class='up_arrow';
+                                            }
+                                            var table = "<table class='table table-striped'><thead><tr><th>Stock Details</th></thead><tbody>";
+									        table += "<tr><td>Name</td><td>"+data.Name+"</td></tr>";
+									        table += "<tr><td>Symbol</td><td>"+data.Symbol+"</td></tr>";
+									        table += "<tr><td>Last Price</td><td>$"+parseFloat(data.LastPrice).toFixed(2)+"</td></tr>";
+									        table += "<tr><td>Change (Change Percent)</td><td class='"+color_class+"'>"+parseFloat(data.ChangePercent).toFixed(2)+"<img src="+arrow_url+"></td></tr>";
+                                            table += "<tr><td>Time and Date</td><td>"+data.Timestamp+"</td></tr>";
+									        table += "<tr><td>Market Cap</td><td>"+data.MarketCap+"</td></tr>";
+								            table += "<tr><td>Volume</td><td>"+data.Volume+"</td></tr>";
+									        table += "<tr><td>Change YTD(Change Percent YTD)</td><td>"+data.ChangePercentYTD+"</td></tr>";
+									        table += "<tr><td>High Price</td><td>"+data.High+"</td></tr>";
+									        table += "<tr><td>Low Price</td><td>"+data.Low+"</td></tr>";
+									        table += "<tr><td>Opening Price</td><td>"+data.Open+"</td></tr>";
+									        table += "</tbody></table>";
+								
+                                      $('#stocktable').html(table);
+                                      
+                                    }
+                                }
+								});
+								return false;
+							
+						});
+					});
+                    
+					function history()
+					{
+						$(function () {
+						var symbol = document.getElementById("stock").value;
+                            console.log(symbol);
+						var sym = symbol;
+						sym = sym.toLowerCase();
+						var val = symbol;
+						val = val.toUpperCase();
+                            console.log(sym);
+						var web = 'https://www.highcharts.com/samples/data/jsonp.php?filename='.concat(sym);
+						web = web.concat('-c.json&callback=?');
+						$.getJSON(web, function (data) {
+
+							// Create the chart
+							$('#historical').highcharts('StockChart', {
+
+
+								rangeSelector : {
+									selected : 1
+								},
+
+								title : {
+									text : val.concat(' Stock Price')
+								},
+
+								series : [{
+									name : sym,
+									data : data,
+									type : 'areaspline',
+									threshold : null,
+									tooltip : {
+										valueDecimals : 2
+									},
+									fillColor : {
+										linearGradient : {
+											x1: 0,
+											y1: 0,
+											x2: 0,
+											y2: 1
+										},
+										stops : [
+											//[0, Highcharts.getOptions().colors[0]],
+											//[1, //Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+										]
+									}
+								}]
+							});
+						});
+					});
+
+					}
+					$(function() 
+					{
+						$("#news").click(function()
+						{
+							var symbol = document.getElementById("stock").value;
+							symbol = symbol.toUpperCase();
+								$.ajax(
+								{
+								  type: "GET",
+								  url: "http://nupoor.t2h965pjcp.us-west-2.elasticbeanstalk.com/index.php",
+								  data: {newsfeed : symbol},
+								dataType: "json",
+								  success: function( newsfeed ) 
+								  {
+									 //newsfeed = JSON.parse(newsfeed);
+									 console.log(newsfeed);
+									 for(var i = 1; i < newsfeed.responseData.results.length ; i++)
+									 {
+										 var html1 = "<div id=\"newsbox\" style=\"background-color:#eaeae1; margin-top:5px;margin-left:15px; margin-right:15px; padding:5px; border-radius:2px\"><a href=\"";
+										 html1 += newsfeed.responseData.results[i].unescapedUrl;
+										 html1 += "\">";
+										 html1 += newsfeed.responseData.results[i].titleNoFormatting;
+										 html1 += "</a><br/><br/>";
+										 html1 += newsfeed.responseData.results[i].content;
+										 html1 += "<br/><br/><br/>Publisher:";
+										 html1 += newsfeed.responseData.results[i].publisher;
+										 html1 += "<br/><br/>Date:";
+										 html1 += newsfeed.responseData.results[i].pubishedDate;
+										 html1 += "</div>";
+										 
+										 $('#feeds').html(html1);
+									 
+									 }
+								  }
+								  
+								});
+								return false;
+							
+						});
+					});
+					
+				</script>
+			
+        
+        
+        
+   <!-- Carousel nav -->
+    
+</body>
+</html>
